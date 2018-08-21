@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-class Book extends Component{
+class BookFind extends Component{
     constructor(){
         super()
         // this.state = {
@@ -35,4 +35,4 @@ class Book extends Component{
     }
 }
 
-export default Book
+export default BookFind

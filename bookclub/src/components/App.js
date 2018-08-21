@@ -5,6 +5,12 @@ import Book from './Book'
 import './App.css'
 
 class App extends Component {
+  randBook(Books){
+    const keys = Object.keys(Books)
+    let i = keys.length -1
+    const j =Math.floor(Math.random() * i)
+    return Books[keys[j]]    
+  }
   render() {
     return (
       <div>
