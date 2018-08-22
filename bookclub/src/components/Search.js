@@ -1,8 +1,22 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Search extends Component{
-    searchBooks(){
-
+    constructor(){
+        super()
+        this.state = {
+            query:'',
+            books:[]
+        }
+    }
+    getBooks = () => {
+        axios.get('http://localhost:3001/search')
+        .then((res) =>{
+            console.log(res)
+            this.setState({
+                books: res.data
+            })
+        })
     }
     render(){
         return(
@@ -11,7 +25,7 @@ class Search extends Component{
                     <input type='text' name='search' placeholder='Search' />
                     <button type='button' onClick="searchBooks()">Search</button>
                 </form>
-                <BookFind search />
+                <BookFind books={this.state.books} />
             </div>
         )
     }
