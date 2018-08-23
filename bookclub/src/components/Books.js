@@ -27,7 +27,7 @@ class Book extends Component{
                 <Link to={{pathname: '/book/'+ book._id, state: {id: book._id}}}>
                     <h3>{book.title}</h3>
                     <h5>{book.author}</h5>
-                    <img src={book.image} alt='Book Cover' />
+                    <img src={book.image} alt={book.title} />
                 </Link>
                 </div>
                 )}

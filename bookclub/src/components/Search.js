@@ -24,7 +24,7 @@ class Search extends Component{
             <div>
                 <form>
                     <input type='text' name='search' placeholder='Search' />
-                    <button type='button' onClick="searchBooks()">Search</button>
+                    <button type='button'>Search</button>
                 </form>
                 <BookFind books={this.state.books} />
             </div>
