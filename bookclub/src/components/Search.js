@@ -23,8 +23,7 @@ class Search extends Component{
             })
         })
     }
-    
-      randBook() {
+    randBook() {
         const keys = Object.keys(this.state.data)
         let i = keys.length - 1
         const j = Math.floor(Math.random() * i)
@@ -32,9 +31,16 @@ class Search extends Component{
         this.setState({
           random: this.state.data[keys[j]]
         })
-      }
-    getBooks = () => {
-        axios.get('http://localhost:3001/search')
+    }
+    onChange = (e) => {
+        const state = this.state
+        state[e.target.name] = e.target.value
+        this.setState(state)
+    }
+    onSubmit = (e) =>{
+        e.preventDefault()
+        const {query} = this.state
+        axios.post(`${URL}/search`, {query})
         .then((res) =>{
             console.log(res)
             this.setState({
@@ -42,6 +48,7 @@ class Search extends Component{
             })
         })
     }
+    
     render(){
         if (this.state.random !== null){
             return <Redirect to={{pathname: '/book/'+ this.state.random._id, state: {id: this.state.random._id}}} />
@@ -49,9 +56,9 @@ class Search extends Component{
         return(
             <div>
                 <button onClick={() => this.randBook()}>Random</button>
-                <form>
-                    <input type='text' name='search' placeholder='Search' />
-                    <button type='button'>Search</button>
+                <form onSubmit={this.onSubmit}>
+                    <input type='text' name='query' value={this.state.query} onChange={this.onChange} placeholder='Search' />
+                    <button type='submit'>Search</button>
                 </form>
                 <BookFind books={this.state.books} />
             </div>
