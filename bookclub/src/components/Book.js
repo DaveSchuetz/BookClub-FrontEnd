@@ -10,7 +10,7 @@ class Book extends Component{
             book: []
         }
     }
-    componentWillMount(){
+    componentDidMount(){
         const {id} = this.props.match.params
         axios.get(`${URL}/${id}`)
         .then((res) =>{
