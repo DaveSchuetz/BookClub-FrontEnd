@@ -3,7 +3,6 @@ import React from 'react'
 const BookFind = props => {
     let {books} = props
     
-    render()
         return(
             <div>
                 {books.map((book, i)=>

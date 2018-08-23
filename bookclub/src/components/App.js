@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import Search from './Search'
 import Book from './Book'
+import Books from './Books'
 import './App.css'
 
 class App extends Component {
@@ -23,7 +24,8 @@ class App extends Component {
         <main>
           <Switch>
             <Route path='/search' component={Search} />
-            <Route path='/book' component={Book} />
+            <Route path='/book/:id' component={Book} />
+            <Route path='/book' component={Books} />
             <Route path='/*' render={() => <Redirect to='/search' />} />
           </Switch>
         </main>

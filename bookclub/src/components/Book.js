@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+const URL = 'http://localhost:3001/book'
+
 class Book extends Component{
     constructor(){
         super()
-        // this.state = {
-        //     book:[]
-        // }
-        this.state ={
-            "title": "Adventures of Sherlock Holmes",
-            "author": "Arthur Conan Doyle",
-            "description": "The Adventures of Sherlock Holmes is a collection of twelve short stories by Arthur Conan Doyle, featuring his fictional detective Sherlock Holmes",
-            "image": "https://images-na.ssl-images-amazon.com/images/I/51AL2N%2BmmfL.jpg"
+        this.state = {
+            book: []
         }
     }
-    componentDidMount(){
-        axios.get('http://localhost:3001/book')
+    componentWillMount(){
+        const {id} = this.props.match.params
+        axios.get(`${URL}/${id}`)
         .then((res) =>{
             console.log(res)
             this.setState({
@@ -26,10 +23,10 @@ class Book extends Component{
     render(){
         return(
             <div>
-                <h3>{this.state.title}</h3>
-                <h5>{this.state.author}</h5>
-                <p>{this.state.description}</p>
-                <img src={this.state.image} alt="Book cover" />
+                <h3>{this.state.book.title}</h3>
+                <h5>{this.state.book.author}</h5>
+                <p>{this.state.book.description}</p>
+                <img src={this.state.book.image} alt="Book cover" />
             </div>
         )
     }
