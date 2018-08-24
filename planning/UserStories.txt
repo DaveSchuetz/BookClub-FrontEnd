@@ -1,0 +1,7 @@
+User goes to the site to look for a new book club read
+There is a reandom search function to pick something from the api
+search will load title author picture, link to amazon
+will be able to see previous comments
+
+Also going to be a search for boooks. When you find a book, you are able to leave a comment.
+User will be able to edit and delete comments
