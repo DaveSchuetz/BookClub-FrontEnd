@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import BookFind from './BookFind'
 import {Redirect} from 'react-router-dom'
-const URL = 'http://localhost:3001/book'
+const URL = 'https://mern-bookclub.herokuapp.com/book'
 
 class Search extends Component{
     constructor(){

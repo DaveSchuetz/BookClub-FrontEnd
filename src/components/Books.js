@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-const URL = 'http://localhost:3001/book'
+const URL = 'https://mern-bookclub.herokuapp.com/book'
 
 class Book extends Component{
     constructor(){
