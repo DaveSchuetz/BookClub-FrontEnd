@@ -17,7 +17,6 @@ class Search extends Component{
     componentDidMount(){
         axios.get(`${URL}`)
         .then((res) =>{
-            console.log(res)
             this.setState({
                 data: res.data
             })
@@ -27,7 +26,6 @@ class Search extends Component{
         const keys = Object.keys(this.state.data)
         let i = keys.length - 1
         const j = Math.floor(Math.random() * i)
-        console.log(this.state.data[keys[j]])
         this.setState({
           random: this.state.data[keys[j]]
         })
@@ -42,7 +40,6 @@ class Search extends Component{
         const {query} = this.state
         axios.post(`${URL}/search`, {query})
         .then((res) =>{
-            console.log(res)
             this.setState({
                 books: res.data
             })

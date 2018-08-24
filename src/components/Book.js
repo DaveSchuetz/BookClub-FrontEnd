@@ -7,18 +7,39 @@ class Book extends Component{
     constructor(){
         super()
         this.state = {
-            book: []
+            book: [],
+            content: '',
+            comments:[]
         }
     }
     componentDidMount(){
         const {id} = this.props.match.params
         axios.get(`${URL}/${id}`)
         .then((res) =>{
-            console.log(res)
             this.setState({
-                book: res.data
+                book: res.data,
+                comments: res.data.comments
             })
         })
+    }
+    onChange = (e) => {
+        const state = this.state
+        state[e.target.name] = e.target.value
+        this.setState(state)
+    }
+    onSubmit = () =>{
+        const {content} = this.state
+        const {book} = this.state
+        axios.post(`http://localhost:3001/comment`, {content,  book})
+        .then((res) =>{
+            this.setState({
+                comments: res.data.comments
+            })
+        })
+    }
+    comDel(id){
+        window.location.reload()
+        axios.delete('http://localhost:3001/comment/'+ id)
     }
     render(){
         return(
@@ -27,6 +48,16 @@ class Book extends Component{
                 <h5>{this.state.book.author}</h5>
                 <p>{this.state.book.description}</p>
                 <img src={this.state.book.image} alt="Book cover" />
+                {this.state.comments.map((comment, i)=>
+                <div className='comment' key={i}>
+                    <h3>{comment.comment}</h3>
+                    <button type='submit' onClick={this.comDel.bind(this, comment._id)}>Delete</button>
+                </div>
+                )}
+                <form onSubmit={this.onSubmit}>
+                    <input type='text' name='content' value={this.state.content} onChange={this.onChange} placeholder='Add Comment' />
+                    <button type='submit'>Comment</button>
+                </form>
             </div>
         )
     }

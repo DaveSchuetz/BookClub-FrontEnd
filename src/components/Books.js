@@ -13,7 +13,6 @@ class Book extends Component{
     componentDidMount(){
         axios.get(`${URL}`)
         .then((res) =>{
-            console.log(res)
             this.setState({
                 books: res.data
             })
