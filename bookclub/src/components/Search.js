@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Search.css'
+
 import BookFind from './BookFind'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 const URL = 'http://localhost:3001/book'
 
-class Search extends Component{
-    constructor(){
+
+
+class Search extends Component {
+    constructor() {
         super()
         this.state = {
-            query:'',
+            query: '',
             data: [],
-            books:[],
+            books: [],
             random: null
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         axios.get(`${URL}`)
-        .then((res) =>{
-            console.log(res)
-            this.setState({
-                data: res.data
+            .then((res) => {
+                console.log(res)
+                this.setState({
+                    data: res.data
+                })
             })
-        })
     }
     randBook() {
         const keys = Object.keys(this.state.data)
@@ -29,7 +33,7 @@ class Search extends Component{
         const j = Math.floor(Math.random() * i)
         console.log(this.state.data[keys[j]])
         this.setState({
-          random: this.state.data[keys[j]]
+            random: this.state.data[keys[j]]
         })
     }
     onChange = (e) => {
@@ -37,30 +41,32 @@ class Search extends Component{
         state[e.target.name] = e.target.value
         this.setState(state)
     }
-    onSubmit = (e) =>{
+    onSubmit = (e) => {
         e.preventDefault()
-        const {query} = this.state
-        axios.post(`${URL}/search`, {query})
-        .then((res) =>{
-            console.log(res)
-            this.setState({
-                books: res.data
+        const { query } = this.state
+        axios.post(`${URL}/search`, { query })
+            .then((res) => {
+                console.log(res)
+                this.setState({
+                    books: res.data
+                })
             })
-        })
     }
-    
-    render(){
-        if (this.state.random !== null){
-            return <Redirect to={{pathname: '/book/'+ this.state.random._id, state: {id: this.state.random._id}}} />
-          }
-        return(
+
+    render() {
+        if (this.state.random !== null) {
+            return <Redirect to={{ pathname: '/book/' + this.state.random._id, state: { id: this.state.random._id } }} />
+        }
+        return (
             <div>
-                <button onClick={() => this.randBook()}>Random</button>
-                <form onSubmit={this.onSubmit}>
-                    <input type='text' name='query' value={this.state.query} onChange={this.onChange} placeholder='Search' />
-                    <button type='submit'>Search</button>
-                </form>
-                <BookFind books={this.state.books} />
+                <div class="search">
+                    <button onClick={() => this.randBook()}>Random</button>
+                    <form onSubmit={this.onSubmit}>
+                        <input type='text' name='query' value={this.state.query} onChange={this.onChange} placeholder='Search' />
+                        <button type='submit'>Search</button>
+                    </form>
+                    <BookFind books={this.state.books} />
+                </div>
             </div>
         )
     }
