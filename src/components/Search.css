@@ -1,0 +1,25 @@
+.search {
+    display: grid;
+     font-family: 'Ledger', serif;
+     /* border: 3px solid red; */
+ }
+ 
+ input {
+     width: auto;
+     height: 30px;
+     border: 3px solid black;
+ }
+ 
+ button {
+     grid-column:  1;
+     grid-row: 6;
+     padding: 3px;
+     font-size: 17px;
+     color: aliceblue;
+     float: left;
+     width: 300px;
+     background: rgba(0, 0, 0, 1);
+     border: 1px solid black;
+     border-radius: 20%;
+     margin: 5px;
+ }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Book.css'
 
 const URL = 'http://localhost:3001/book'
 
@@ -59,10 +60,12 @@ class Book extends Component{
     render(){
         return(
             <div>
-                <h3>{this.state.book.title}</h3>
-                <h5>{this.state.book.author}</h5>
-                <p>{this.state.book.description}</p>
-                <img src={this.state.book.image} alt="Book cover" />
+                <div className="grid-container">
+                    <h3>{this.state.book.title}</h3>
+                    <h5>{this.state.book.author}</h5>
+                    <p>{this.state.book.description}</p>
+                    <img src={this.state.book.image} alt="Book cover" />
+                </div>
                 {this.state.comments.map((comment, i)=>
                 <div className='comment' key={i}>
                     <h3>{comment.comment}</h3>

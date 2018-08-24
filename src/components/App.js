@@ -8,7 +8,7 @@ import './App.css'
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="bodyPic">
         <nav>
           <h1>Book Club</h1>
           <h2>The first rule of book club...</h2>

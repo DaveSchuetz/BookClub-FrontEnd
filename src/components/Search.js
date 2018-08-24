@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import BookFind from './BookFind'
 import {Redirect} from 'react-router-dom'
+import './Search.css'
 const URL = 'http://localhost:3001/book'
 
 class Search extends Component{
@@ -52,11 +53,13 @@ class Search extends Component{
           }
         return(
             <div>
-                <button onClick={() => this.randBook()}>Random</button>
-                <form onSubmit={this.onSubmit}>
-                    <input type='text' name='query' value={this.state.query} onChange={this.onChange} placeholder='Search' />
-                    <button type='submit'>Search</button>
-                </form>
+                <div className="search">
+                    <button onClick={() => this.randBook()}>Random</button>
+                    <form onSubmit={this.onSubmit}>
+                        <input type='text' name='query' value={this.state.query} onChange={this.onChange} placeholder='Search' />
+                        <button type='submit'>Search</button>
+                    </form>
+                </div>
                 <BookFind books={this.state.books} />
             </div>
         )
