@@ -9,6 +9,7 @@ class Book extends Component{
         this.state = {
             book: [],
             content: '',
+            update:[],
             comments:[]
         }
     }
@@ -27,6 +28,11 @@ class Book extends Component{
         state[e.target.name] = e.target.value
         this.setState(state)
     }
+    comChange = (e) => {
+        const state = this.state.comments
+        state[e.target.name].comment = e.target.value
+        this.setState(state)
+    }
     onSubmit = () =>{
         const {content} = this.state
         const {book} = this.state
@@ -41,6 +47,15 @@ class Book extends Component{
         window.location.reload()
         axios.delete('http://localhost:3001/comment/'+ id)
     }
+    comEdit(id, i){
+        const {comment} = this.state.comments[i]
+        axios.put('http://localhost:3001/comment/'+ id, {comment})
+        .then((res) =>{
+            this.setState({
+                comments: res.data.comments
+            })
+        })
+    }
     render(){
         return(
             <div>
@@ -52,6 +67,10 @@ class Book extends Component{
                 <div className='comment' key={i}>
                     <h3>{comment.comment}</h3>
                     <button type='submit' onClick={this.comDel.bind(this, comment._id)}>Delete</button>
+                <form onSubmit={this.comEdit.bind(this, comment._id, i)}>
+                    <input type='text' name={i} value={this.state.comments[i].comment} onChange={this.comChange} />
+                    <button type='submit'>Update</button>
+                </form>
                 </div>
                 )}
                 <form onSubmit={this.onSubmit}>
