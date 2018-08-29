@@ -60,13 +60,10 @@ class Book extends Component{
     showEdit(i){
         const commVis = document.getElementById(`comm${i}`)
         commVis.style.display = 'none'
-        console.log(commVis)
         const btnVis = document.getElementById(`showBtn${i}`)
         btnVis.style.display = 'none'
-        console.log(btnVis)
         const formHid = document.getElementById(`showForm${i}`)
         formHid.style.display = 'block'
-        console.log(formHid)
     }
     render(){
         return(

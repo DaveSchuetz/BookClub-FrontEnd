@@ -13,7 +13,6 @@ h3 {
     font-size: 50px;
     grid-column: 2 / 8 ;
     grid-row: 1;
-    /* border: 10px solid black; */
     margin: 0px 0px 0px 0px;
     color: black;
     -webkit-text-fill-color: white; /* Will override color (regardless of order) */
@@ -25,22 +24,15 @@ h3 {
 h4 {
     font-size: 25px;
     color: rgb(236, 236, 236);
-    /* grid-column: 2 / 8;
-    grid-row: 1; */
-
 }
 h5 {
     padding: 20px 0px 10px 0px;
     font-size: 18px;
-    /* grid-column: 2 / 8 ;
-    grid-row: 1; */
     color: rgb(236, 236, 236);
 }
 img {
     border: 5px solid rgb(0, 0, 0);
     border-radius: 5%;
-    /* grid-column: 1;
-    grid-row: 1; */
     max-width: 300px;
     max-height: 300px;
     min-width: 150px;
