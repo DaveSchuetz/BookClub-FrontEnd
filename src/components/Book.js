@@ -38,11 +38,6 @@ class Book extends Component{
         const {content} = this.state
         const {book} = this.state
         axios.post(`http://localhost:3001/comment`, {content,  book})
-        .then((res) =>{
-            this.setState({
-                comments: res.data.comments
-            })
-        })
     }
     comDel(id){
         window.location.reload()
@@ -51,11 +46,6 @@ class Book extends Component{
     comEdit(id, i){
         const {comment} = this.state.comments[i]
         axios.put('http://localhost:3001/comment/'+ id, {comment})
-        .then((res) =>{
-            this.setState({
-                comments: res.data.comments
-            })
-        })
     }
     render(){
         return(
