@@ -7,7 +7,7 @@ const BookFind = props => {
     
         return(
             <div>
-                <div class="result">
+                <div className="result">
                     {books.map((book, i)=>
                     <div className='book-find' key={i}>
                     <Link to={{pathname: '/book/'+ book._id, state: {id: book._id}}}>

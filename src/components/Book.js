@@ -65,10 +65,9 @@ class Book extends Component{
                     <h5>{this.state.book.author}</h5>
                     <p>{this.state.book.description}</p>
                     <img src={this.state.book.image} alt="Book cover" />
-                </div>
                 {this.state.comments.map((comment, i)=>
                 <div className='comment' key={i}>
-                    <h3>{comment.comment}</h3>
+                    <p>{comment.comment}</p>
                     <button type='submit' onClick={this.comDel.bind(this, comment._id)}>Delete</button>
                 <form onSubmit={this.comEdit.bind(this, comment._id, i)}>
                     <input type='text' name={i} value={this.state.comments[i].comment} onChange={this.comChange} />
@@ -80,6 +79,7 @@ class Book extends Component{
                     <input type='text' name='content' value={this.state.content} onChange={this.onChange} placeholder='Add Comment' />
                     <button type='submit'>Comment</button>
                 </form>
+                </div>
             </div>
         )
     }
