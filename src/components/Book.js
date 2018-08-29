@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './Book.css'
 
-const URL = 'https://mern-bookclub.herokuapp.com/book'
+const URL = 'http://localhost:3001/book'
 
 class Book extends Component{
     constructor(){
@@ -37,7 +37,7 @@ class Book extends Component{
     onSubmit = () =>{
         const {content} = this.state
         const {book} = this.state
-        axios.post(`https://mern-bookclub.herokuapp.com/comment`, {content,  book})
+        axios.post(`http://localhost:3001/comment`, {content,  book})
         .then((res) =>{
             this.setState({
                 comments: res.data.comments
@@ -46,11 +46,11 @@ class Book extends Component{
     }
     comDel(id){
         window.location.reload()
-        axios.delete('https://mern-bookclub.herokuapp.com/comment/'+ id)
+        axios.delete('http://localhost:3001/comment/'+ id)
     }
     comEdit(id, i){
         const {comment} = this.state.comments[i]
-        axios.put('https://mern-bookclub.herokuapp.com/comment/'+ id, {comment})
+        axios.put('http://localhost:3001/comment/'+ id, {comment})
         .then((res) =>{
             this.setState({
                 comments: res.data.comments

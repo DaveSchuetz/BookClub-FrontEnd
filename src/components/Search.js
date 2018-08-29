@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom'
 
 import './Search.css'
 
-const URL = 'https://mern-bookclub.herokuapp.com/book'
+const URL = 'http://localhost:3001/book'
 
 class Search extends Component{
     constructor(){
