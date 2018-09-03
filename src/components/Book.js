@@ -38,11 +38,6 @@ class Book extends Component{
         const {content} = this.state
         const {book} = this.state
         axios.post(`https://mern-bookclub.herokuapp.com/comment`, {content,  book})
-        // .then((res) =>{
-        //     this.setState({
-        //         comments: res.data.comments
-        //     })
-        // })
     }
     comDel(id){
         window.location.reload()
@@ -51,11 +46,6 @@ class Book extends Component{
     comEdit(id, i){
         const {comment} = this.state.comments[i]
         axios.put('https://mern-bookclub.herokuapp.com/comment/'+ id, {comment})
-        // .then((res) =>{
-        //     this.setState({
-        //         comments: res.data.comments
-        //     })
-        // })
     }
     showEdit(i){
         const commVis = document.getElementById(`comm${i}`)
