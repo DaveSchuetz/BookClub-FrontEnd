@@ -67,30 +67,30 @@ class Book extends Component{
     }
     render(){
         return(
-            <div>
-                <div className="grid-container">
+            <div className="grid-container">
+                <div>
                     <h3>{this.state.book.title}</h3>
                     <h5>{this.state.book.author}</h5>
                     <p>{this.state.book.description}</p>
                     <img src={this.state.book.image} alt="Book cover" />
-                    
-                        <form onSubmit={this.onSubmit}>
-                            <input size="50" type='text' name='content' value={this.state.content} onChange={this.onChange} placeholder='Add Comment' />
-                            <button className="newComm" type='submit'>Comment</button>
-                        </form>
+                    <form onSubmit={this.onSubmit}>
+                        <input size="50" type='text' name='content' value={this.state.content} onChange={this.onChange} placeholder='Add Comment' />
+                        <button className="newComm" type='submit'>Comment</button>
+                    </form>
+                    </div>
+                    <div>
                         {this.state.comments.map((comment, i)=>
                         <div className='commentBox' key={i}>
                             <p className='comment' id={'comm'+i}>{comment.comment}</p>
-                        <button className="del" type='submit' onClick={this.comDel.bind(this, comment._id)}>X</button>
-                        <button className="showEdit" id={'showBtn' + i} type='submit' onClick={this.showEdit.bind(this, i)}>Update</button>
-                        <form id={'showForm' + i} className="update" onSubmit={this.comEdit.bind(this, comment._id, i)}>
+                            <button className="del" type='submit' onClick={this.comDel.bind(this, comment._id)}>X</button>
+                            <button className="showEdit" id={'showBtn' + i} type='submit' onClick={this.showEdit.bind(this, i)}>Update</button>
+                            <form id={'showForm' + i} className="update" onSubmit={this.comEdit.bind(this, comment._id, i)}>
                             <input size='35' type='text' name={i} value={this.state.comments[i].comment} onChange={this.comChange} />
                             <button className="updBtn" type='submit'>Update</button>
                         </form>
                         
                         </div>
                         )}
-                    
                 </div>
             </div>
         )
