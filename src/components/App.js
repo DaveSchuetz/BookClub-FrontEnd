@@ -9,11 +9,13 @@ class App extends Component {
   render() {
     return (
       <div className="bodyPic">
+      <header>
         <nav>
           <h1>Book Club</h1>
           <h2>The first rule of book club...</h2>
-          <Link to='/'><h3>Home</h3></Link>
         </nav>
+        <Link to='/'><p>Home</p></Link>
+      </header>
         <main>
           <Switch>
             <Route path='/search' component={Search} />
